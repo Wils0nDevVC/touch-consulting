@@ -5,6 +5,16 @@ VisualStudioVersion = 17.12.35527.113 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TouchConsulting.GestorInventario.Common", "TouchConsulting.GestorInventario.Common\TouchConsulting.GestorInventario.Common.csproj", "{1DC7D3D7-F350-4476-835C-DDD472E515C8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TouchConsulting.GestorInventario.Domain", "TouchConsulting.GestorInventario.Domain\TouchConsulting.GestorInventario.Domain.csproj", "{5B7F6DED-51C8-4C23-B5E4-927741B3A8C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TouchConsulting.GestorInventario.Application", "TouchConsulting.GestorInventario.Application\TouchConsulting.GestorInventario.Application.csproj", "{8C9BDB2B-720C-4E4E-8847-F3C868B9B371}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TouchConsulting.GestorInventario.Infrastructure", "TouchConsulting.GestorInventario.Infrastructure\TouchConsulting.GestorInventario.Infrastructure.csproj", "{79F10510-62B0-4073-9F4F-7E3E841E03C2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cross", "Cross", "{00D8F3A1-9DAC-47B8-B59A-1AECD3BB6B7E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CleanArchitecture", "CleanArchitecture", "{CC120C1C-FD43-4AB9-8023-7123F8529676}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,8 +25,26 @@ Global
 		{1DC7D3D7-F350-4476-835C-DDD472E515C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DC7D3D7-F350-4476-835C-DDD472E515C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1DC7D3D7-F350-4476-835C-DDD472E515C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B7F6DED-51C8-4C23-B5E4-927741B3A8C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B7F6DED-51C8-4C23-B5E4-927741B3A8C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B7F6DED-51C8-4C23-B5E4-927741B3A8C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B7F6DED-51C8-4C23-B5E4-927741B3A8C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C9BDB2B-720C-4E4E-8847-F3C868B9B371}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C9BDB2B-720C-4E4E-8847-F3C868B9B371}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C9BDB2B-720C-4E4E-8847-F3C868B9B371}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C9BDB2B-720C-4E4E-8847-F3C868B9B371}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79F10510-62B0-4073-9F4F-7E3E841E03C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79F10510-62B0-4073-9F4F-7E3E841E03C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79F10510-62B0-4073-9F4F-7E3E841E03C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79F10510-62B0-4073-9F4F-7E3E841E03C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1DC7D3D7-F350-4476-835C-DDD472E515C8} = {00D8F3A1-9DAC-47B8-B59A-1AECD3BB6B7E}
+		{5B7F6DED-51C8-4C23-B5E4-927741B3A8C3} = {CC120C1C-FD43-4AB9-8023-7123F8529676}
+		{8C9BDB2B-720C-4E4E-8847-F3C868B9B371} = {CC120C1C-FD43-4AB9-8023-7123F8529676}
+		{79F10510-62B0-4073-9F4F-7E3E841E03C2} = {CC120C1C-FD43-4AB9-8023-7123F8529676}
 	EndGlobalSection
 EndGlobal

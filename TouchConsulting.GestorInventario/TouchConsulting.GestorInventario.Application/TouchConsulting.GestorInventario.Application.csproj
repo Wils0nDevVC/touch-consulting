@@ -7,4 +7,19 @@
 		<LangVersion>11.0</LangVersion>
 	</PropertyGroup>
 
+	<ItemGroup>
+	  <PackageReference Include="AutoMapper" Version="13.0.1" />
+	  <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.11.0" />
+	  <PackageReference Include="MediatR" Version="12.4.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\TouchConsulting.GestorInventario.Common\TouchConsulting.GestorInventario.Common.csproj" />
+	  <ProjectReference Include="..\TouchConsulting.GestorInventario.Domain\TouchConsulting.GestorInventario.Domain.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Handlers\" />
+	</ItemGroup>
+
 </Project>

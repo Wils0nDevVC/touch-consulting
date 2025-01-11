@@ -4,6 +4,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using JobBoard.Infrastructure.Persistence;
 using Microsoft.Extensions.Logging;
+using TouchConsulting.GestorInventario.Domain.Interfaces;
+using TouchConsulting.GestorInventario.Infrastructure.Repositories;
 
 
 namespace TouchConsulting.GestorInventario.Infrastructure
@@ -21,6 +23,8 @@ namespace TouchConsulting.GestorInventario.Infrastructure
                             .EnableSensitiveDataLogging();
                 }
             });
+
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
             return services;
         }
