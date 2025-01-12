@@ -1,7 +1,11 @@
-﻿
-using Microsoft.AspNetCore.Localization;
+﻿using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using Reec.Inspection;
+using Reec.Inspection.SqlServer;
 using Serilog;
 using System.Globalization;
 using System.Reflection;
@@ -14,11 +18,15 @@ string outputTem = "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz } {RequestId,13} [{Le
 ConfigurationManager configuration = builder.Configuration;
 IWebHostEnvironment environment = builder.Environment;
 
+
+
+
 Log.Logger = new LoggerConfiguration()
                  .Enrich.FromLogContext()
                  .WriteTo.Console(outputTemplate: outputTem)
                  .ReadFrom.Configuration(configuration)
                  .CreateBootstrapLogger();
+
 
 builder.Host
     .UseSerilog((context, services, configuration) =>
@@ -32,6 +40,8 @@ builder.Host
 
 configuration.AddJsonFile($"appsettings.{environment.EnvironmentName}.json", optional: false, reloadOnChange: true);
 
+
+// Add services to the container.
 builder.Services.AddControllers();
 
 builder.Services.AddMvc()
@@ -41,6 +51,8 @@ builder.Services.AddMvc()
         options.SerializerSettings.ContractResolver = new DefaultContractResolver();
     })
     .AddXmlSerializerFormatters();
+
+
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -56,6 +68,8 @@ builder.Services.AddSwaggerGen(c =>
 
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(configuration, environment.IsEnvironment("Development"));
+
+
 
 builder.Services.AddCors(o => o.AddPolicy("All", builder =>
 {

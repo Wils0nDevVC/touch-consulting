@@ -1,6 +1,4 @@
 ﻿using AutoMapper;
-using JobBoard.Domain;
-using JobBoard.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,11 +7,12 @@ using System.Text;
 using System.Threading.Tasks;
 using TouchConsulting.GestorInventario.Domain;
 using TouchConsulting.GestorInventario.Domain.Interfaces;
+using TouchConsulting.GestorInventario.Infrastructure.Persitence;
 
 namespace TouchConsulting.GestorInventario.Infrastructure.Repositories
 {
     public class GenericRepository<TEntity> : IGenericRepository<TEntity>
-                              where TEntity : BaseEntity, IGenerateEntity<TEntity>
+                              where TEntity : BaseEntity
     {
         private readonly BaseDbContext _context;
         private readonly IMapper _mapper;
@@ -109,15 +108,20 @@ namespace TouchConsulting.GestorInventario.Infrastructure.Repositories
             _context.Entry(entity).State = EntityState.Modified; 
         }
 
-        public async Task<TEntity> UpdateAsync(TEntity entity)
+        public Task<TEntity> UpdateAsync(TEntity entity)
         {
-            TEntity destination = entity.RecoverKey();
-            _dbSet.Attach(destination);
-            _context.Entry(destination).State = EntityState.Modified;
-            _mapper.Map(entity, destination);
-            destination.updateAt = DateTime.Now;
-            var entry = _context.Entry(destination);
-            return destination;
+            throw new NotImplementedException();
         }
+
+        //public async Task<TEntity> UpdateAsync(TEntity entity)
+        //{
+        //    TEntity destination = entity.RecoverKey();
+        //    _dbSet.Attach(destination);
+        //    _context.Entry(destination).State = EntityState.Modified;
+        //    _mapper.Map(entity, destination);
+        //    destination.updateAt = DateTime.Now;
+        //    var entry = _context.Entry(destination);
+        //    return destination;
+        //}
     }
 }

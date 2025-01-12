@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace JobBoard.Domain
+namespace TouchConsulting.GestorInventario.Domain.Interfaces
 {
 
     /// <summary>

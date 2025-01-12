@@ -13,8 +13,27 @@ namespace TouchConsulting.GestorInventario.Infrastructure.Persitence.Configurati
     {
         public void Configure(EntityTypeBuilder<Role> builder)
         {
-            builder.ToTable("Role");
-            builder.HasKey(t => t.Id);
+            builder.ToTable("Roles");
+
+            builder.HasKey(r => r.Id);
+
+            builder.Property(r => r.Name)
+                .IsRequired()
+                .HasMaxLength(255);
+
+            builder.HasMany(r => r.UserRoles)
+                .WithOne(ur => ur.Role)
+                .HasForeignKey(ur => ur.RoleId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // Configurar las propiedades heredadas de BaseEntity (createAt y updateAt)
+            builder.Property(t => t.createAt)
+                .HasColumnType("datetimeoffset")  // Usar datetimeoffset para mantener la zona horaria
+                .IsRequired();
+
+            builder.Property(t => t.updateAt)
+                .HasColumnType("datetimeoffset")  // Usar datetimeoffset para mantener la zona horaria
+                .IsRequired(false);  // La propiedad 'updateAt' es opcional
         }
     }
 }

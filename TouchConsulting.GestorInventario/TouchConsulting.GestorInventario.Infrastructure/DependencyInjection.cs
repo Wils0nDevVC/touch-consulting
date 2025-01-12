@@ -2,10 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
-using JobBoard.Infrastructure.Persistence;
 using Microsoft.Extensions.Logging;
 using TouchConsulting.GestorInventario.Domain.Interfaces;
 using TouchConsulting.GestorInventario.Infrastructure.Repositories;
+using TouchConsulting.GestorInventario.Application.Interfaces;
+using TouchConsulting.GestorInventario.Infrastructure.Persitence;
 
 
 namespace TouchConsulting.GestorInventario.Infrastructure
@@ -25,6 +26,7 @@ namespace TouchConsulting.GestorInventario.Infrastructure
             });
 
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             return services;
         }

@@ -9,7 +9,17 @@ namespace TouchConsulting.GestorInventario.Infrastructure.Persitence.Configurati
         public void Configure(EntityTypeBuilder<Category> builder)
         {
             builder.ToTable("Category");
-            builder.HasKey(t => t.Id);
+            builder.HasKey(c => c.Id);
+
+            builder.Property(c => c.Description)
+                .IsRequired()
+                .HasMaxLength(255);
+
+            // Relación con Product
+            builder.HasMany(c => c.Products)
+                .WithOne(p => p.Category)
+                .HasForeignKey(p => p.CategoryId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
