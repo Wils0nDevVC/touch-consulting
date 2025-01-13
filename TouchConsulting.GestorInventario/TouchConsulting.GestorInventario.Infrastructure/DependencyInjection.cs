@@ -9,6 +9,8 @@ using TouchConsulting.GestorInventario.Application.Interfaces;
 using TouchConsulting.GestorInventario.Infrastructure.Persitence;
 using TouchConsulting.GestorInventario.Infrastructure.Security;
 using TouchConsulting.GestorInventario.Application.Interfaces.Repository;
+using TouchConsulting.GestorInventario.ExternalServices.Arroba;
+using TouchConsulting.GestorInventario.ExternalServices.Arroba.Models;
 
 
 namespace TouchConsulting.GestorInventario.Infrastructure
@@ -34,5 +36,17 @@ namespace TouchConsulting.GestorInventario.Infrastructure
 
             return services;
         }
+
+        public static IServiceCollection AddInfrastructureExternalServices(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddArroba(() =>
+            {
+                return configuration.GetSection(nameof(MailSettings)).Get<MailSettings>();
+            });
+
+            return services;
+
+        }
+
     }
 }

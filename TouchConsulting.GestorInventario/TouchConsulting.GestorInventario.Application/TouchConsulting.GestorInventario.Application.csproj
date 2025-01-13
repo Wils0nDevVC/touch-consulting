@@ -18,6 +18,7 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\TouchConsulting.GestorInventario.Common\TouchConsulting.GestorInventario.Common.csproj" />
 	  <ProjectReference Include="..\TouchConsulting.GestorInventario.Domain\TouchConsulting.GestorInventario.Domain.csproj" />
+	  <ProjectReference Include="..\TouchConsulting.GestorInventario.ExternalServices\TouchConsulting.GestorInventario.ExternalServices.csproj" />
 	</ItemGroup>
 
 </Project>

@@ -30,6 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TouchConsulting.GestorInventario.ExternalServices\TouchConsulting.GestorInventario.ExternalServices.csproj" />
     <ProjectReference Include="..\TouchConsulting.GestorInventario.Infrastructure\TouchConsulting.GestorInventario.Infrastructure.csproj" />
   </ItemGroup>
 

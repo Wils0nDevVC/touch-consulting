@@ -22,6 +22,11 @@ namespace TouchConsulting.GestorInventario.Common.Helpers
             public const string UpdateProduct = "UpdateProduct";
         }
 
+        public static class MailEndpoint
+        {
+            public const string prefixAapi = "Mail";
+        }
+
 
 
 

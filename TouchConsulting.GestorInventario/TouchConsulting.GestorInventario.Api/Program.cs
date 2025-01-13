@@ -10,6 +10,8 @@ using TouchConsulting.GestorInventario.Application;
 using TouchConsulting.GestorInventario.Infrastructure;
 using TouchConsulting.GestorInventario.Infrastructure.Security;
 using System.Text;
+using TouchConsulting.GestorInventario.ExternalServices.Arroba.Models;
+using TouchConsulting.GestorInventario.ExternalServices.Arroba;
 
 var builder = WebApplication.CreateBuilder(args);
 string outputTem = "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz } {RequestId,13} [{Level:u3}] {Message:lj} {Properties} {NewLine}{Exception}";
@@ -37,8 +39,11 @@ builder.Host
         .WriteTo.Console(outputTemplate: outputTem);
     });
 
+
 configuration.AddJsonFile($"appsettings.{environment.EnvironmentName}.json", optional: false, reloadOnChange: true);
 
+
+builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
 
 // Add services to the container.
 builder.Services.AddControllers()
@@ -100,7 +105,7 @@ builder.Services.AddSwaggerGen(c =>
 
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(configuration, environment.IsEnvironment("Development"));
-
+builder.Services.AddInfrastructureExternalServices(configuration);
 
 
 builder.Services.AddCors(o => o.AddPolicy("All", builder =>
@@ -139,8 +144,7 @@ try
 
     app.UseCors("All");
 
-    app.UseRouting();
-    app.UseAuthentication();
+        app.UseAuthentication();
     app.UseAuthorization();
     app.MapControllers();
     app.Run();

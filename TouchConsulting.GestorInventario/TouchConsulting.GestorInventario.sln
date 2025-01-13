@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CleanArchitecture", "CleanA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TouchConsulting.GestorInventario.Api", "TouchConsulting.GestorInventario.Api\TouchConsulting.GestorInventario.Api.csproj", "{EFC0533F-C9BD-46AB-AF0D-A21FA5112CC8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TouchConsulting.GestorInventario.ExternalServices", "TouchConsulting.GestorInventario.ExternalServices\TouchConsulting.GestorInventario.ExternalServices.csproj", "{87263676-4DC6-47DB-B8D2-85EB3F15F736}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{EFC0533F-C9BD-46AB-AF0D-A21FA5112CC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EFC0533F-C9BD-46AB-AF0D-A21FA5112CC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EFC0533F-C9BD-46AB-AF0D-A21FA5112CC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87263676-4DC6-47DB-B8D2-85EB3F15F736}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87263676-4DC6-47DB-B8D2-85EB3F15F736}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87263676-4DC6-47DB-B8D2-85EB3F15F736}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87263676-4DC6-47DB-B8D2-85EB3F15F736}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,5 +59,6 @@ Global
 		{8C9BDB2B-720C-4E4E-8847-F3C868B9B371} = {CC120C1C-FD43-4AB9-8023-7123F8529676}
 		{79F10510-62B0-4073-9F4F-7E3E841E03C2} = {CC120C1C-FD43-4AB9-8023-7123F8529676}
 		{EFC0533F-C9BD-46AB-AF0D-A21FA5112CC8} = {CC120C1C-FD43-4AB9-8023-7123F8529676}
+		{87263676-4DC6-47DB-B8D2-85EB3F15F736} = {00D8F3A1-9DAC-47B8-B59A-1AECD3BB6B7E}
 	EndGlobalSection
 EndGlobal
