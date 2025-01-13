@@ -12,15 +12,12 @@
 	  <PackageReference Include="EFCore.BulkExtensions.SqlServer" Version="7.8.1" />
 	  <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.11.0" />
 	  <PackageReference Include="MediatR" Version="12.4.1" />
+	  <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <ProjectReference Include="..\TouchConsulting.GestorInventario.Common\TouchConsulting.GestorInventario.Common.csproj" />
 	  <ProjectReference Include="..\TouchConsulting.GestorInventario.Domain\TouchConsulting.GestorInventario.Domain.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Handlers\Commands\" />
 	</ItemGroup>
 
 </Project>

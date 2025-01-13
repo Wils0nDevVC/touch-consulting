@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
 
 namespace TouchConsulting.GestorInventario.Application.Dto
 {
@@ -10,6 +6,7 @@ namespace TouchConsulting.GestorInventario.Application.Dto
     {
         public int Id { get; set; }
         public string Description { get; set; }
-        public List<ProductDto> Products { get; set; } = new List<ProductDto>();
+        //[JsonIgnore]
+        //public List<ProductDto> Products { get; set; } = new List<ProductDto>();
     }
 }

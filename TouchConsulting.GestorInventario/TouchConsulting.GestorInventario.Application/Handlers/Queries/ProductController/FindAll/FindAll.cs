@@ -29,7 +29,7 @@ namespace TouchConsulting.GestorInventario.Application.Handlers.Queries.ProductC
             public async Task<Response<IEnumerable<ProductDto>>> Handle(FindAll request, CancellationToken cancellationToken)
             {
                 var response = new Response<IEnumerable<ProductDto>>();
-                var query = _unitOfWork.Products.AsNoTracking();
+                var query = _unitOfWork.Products.AsNoTracking().Include(p => p.Category); ;
 
                 var entities = await query.ToListAsync(cancellationToken);
                 var result = _mapper.Map<IEnumerable<ProductDto>>(entities);

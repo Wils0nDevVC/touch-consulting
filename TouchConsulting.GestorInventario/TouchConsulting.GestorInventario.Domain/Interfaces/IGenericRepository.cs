@@ -22,5 +22,7 @@ namespace TouchConsulting.GestorInventario.Domain.Interfaces
         TEntity Find(params object[] keyValues);
         Task<TEntity> FindAsync(params object[] keyValues);
         Task<TEntity> UpdateAsync(TEntity entity);
+        IQueryable<TEntity> GetQuery(Func<IQueryable<TEntity>, IQueryable<TEntity>> queryFunc);
+
     }
 }

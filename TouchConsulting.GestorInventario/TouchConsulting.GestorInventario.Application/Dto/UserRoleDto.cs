@@ -9,12 +9,8 @@ namespace TouchConsulting.GestorInventario.Application.Dto
 {
     public class UserRoleDto
     {
-        public int UserId { get; set; }
-        public UserDto User { get; set; }
-
         public int RoleId { get; set; }
-        public RoleDto Role { get; set; }
-
+        public string RoleName { get; set; }
         public DateTime AssignedDate { get; set; }
     }
 }

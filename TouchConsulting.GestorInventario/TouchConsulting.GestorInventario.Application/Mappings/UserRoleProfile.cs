@@ -4,12 +4,12 @@ using TouchConsulting.GestorInventario.Domain.Entities;
 
 namespace TouchConsulting.GestorInventario.Application.Mappings
 {
-    public class ProductProfile : Profile
+    public class UserRoleProfile : Profile
     {
-        public ProductProfile()
+        public UserRoleProfile()
         {
-            CreateMap<Product, ProductDto>();
-            CreateMap<ProductDto, Product>();
+            CreateMap<UserRole, UserRoleDto>();
+            CreateMap<UserRoleDto, UserRole>();
         }
     }
 }

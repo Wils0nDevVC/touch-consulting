@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TouchConsulting.GestorInventario.Domain.Entities;
+﻿using Newtonsoft.Json;
 
 namespace TouchConsulting.GestorInventario.Application.Dto
 {
@@ -15,6 +10,7 @@ namespace TouchConsulting.GestorInventario.Application.Dto
         public required decimal Precio { get; set; }
         public required int CantidadInventario { get; set; }
         public int CategoryId { get; set; }
-        public CategoryDto CategoryDto { get; set; }
+        //[JsonIgnore]
+        //public CategoryDto? CategoryDto { get; set; }
     }
 }

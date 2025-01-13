@@ -4,12 +4,12 @@ using TouchConsulting.GestorInventario.Domain.Entities;
 
 namespace TouchConsulting.GestorInventario.Application.Mappings
 {
-    public class ProductProfile : Profile
+    public class CategoryProfile : Profile
     {
-        public ProductProfile()
+        public CategoryProfile()
         {
+            CreateMap<Category, CategoryDto>();
             CreateMap<Product, ProductDto>();
-            CreateMap<ProductDto, Product>();
         }
     }
 }

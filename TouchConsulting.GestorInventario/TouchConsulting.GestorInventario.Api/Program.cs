@@ -1,16 +1,15 @@
-﻿using Microsoft.AspNetCore.Localization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Formatters;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Localization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using Reec.Inspection;
-using Reec.Inspection.SqlServer;
 using Serilog;
 using System.Globalization;
 using System.Reflection;
 using TouchConsulting.GestorInventario.Application;
 using TouchConsulting.GestorInventario.Infrastructure;
+using TouchConsulting.GestorInventario.Infrastructure.Security;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 string outputTem = "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz } {RequestId,13} [{Level:u3}] {Message:lj} {Properties} {NewLine}{Exception}";
@@ -42,7 +41,18 @@ configuration.AddJsonFile($"appsettings.{environment.EnvironmentName}.json", opt
 
 
 // Add services to the container.
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = null; // Desactiva el manejo de referencias circulares
+    });
+
+builder.Services.AddControllers()
+    .AddNewtonsoftJson(options =>
+    {
+        options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+        options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+    });
 
 builder.Services.AddMvc()
     .AddNewtonsoftJson(options =>
@@ -52,6 +62,28 @@ builder.Services.AddMvc()
     })
     .AddXmlSerializerFormatters();
 
+
+builder.Services.AddSingleton<AuthService>();
+
+builder.Services.AddAuthentication(config => {
+    config.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    config.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+    .AddJwtBearer(config =>
+    {
+        config.RequireHttpsMetadata = false;
+        config.SaveToken = true;
+        config.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            ValidateIssuer = false,
+            ValidateAudience = false,
+            ValidateLifetime = true,
+            ClockSkew = TimeSpan.Zero,
+            IssuerSigningKey = new SymmetricSecurityKey
+            (Encoding.UTF8.GetBytes(builder.Configuration["Jwt:key"]))
+        };
+    });
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -81,8 +113,13 @@ try
     Log.Information("Inicio de Api Interno...");
     var app = builder.Build();
 
+
+    // Luego, agrega tu middleware personalizado JwtMiddleware
+    app.UseMiddleware<JwtMiddleware>(builder.Configuration["Jwt:key"]);
+
     app.UsePathBase("/api");
 
+    // Configuración de localización
     var supportedCultures = new[] { new CultureInfo("es-PE") };
     app.UseRequestLocalization(new RequestLocalizationOptions
     {
@@ -91,7 +128,6 @@ try
         FallBackToParentCultures = false
     });
     CultureInfo.DefaultThreadCurrentCulture = CultureInfo.CreateSpecificCulture("es-PE");
-
 
     app.UseSwagger();
     app.UseSwaggerUI(options =>
@@ -102,15 +138,17 @@ try
     });
 
     app.UseCors("All");
+
     app.UseRouting();
+    app.UseAuthentication();
     app.UseAuthorization();
     app.MapControllers();
     app.Run();
-    Log.Information("Deteniendo limpiamente la aplicaci�n Api Interno...");
+    Log.Information("Deteniendo limpiamente la aplicación Api Interno...");
 }
 catch (Exception ex)
 {
-    Log.Fatal(ex, "Se produjo una excepci�n no controlada durante el arranque...");
+    Log.Fatal(ex, "Se produjo una excepción no controlada durante el arranque...");
 }
 finally
 {

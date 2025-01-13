@@ -13,6 +13,15 @@ namespace TouchConsulting.GestorInventario.Common.Helpers
             public const string UpdateProduct= "UpdateProduct";
         }
 
+        public static class AuthEndpoint
+        {
+            public const string prefixAapi = "Auth";
+            public const string CreateUser = "CreateUser";
+            public const string Login = "Login";
+            public const string DeleteProduct = "DeleteProduct";
+            public const string UpdateProduct = "UpdateProduct";
+        }
+
 
 
 

@@ -12,15 +12,16 @@ namespace TouchConsulting.GestorInventario.Application.Interfaces
         #region Entidades mapeadas al contexto
 
         IGenericRepository<Product> Products { get; }
+        IGenericRepository<User> Users { get; }
 
-        
+
 
         #endregion
 
 
 
 
-        #region Funciones y metodos públicos
+            #region Funciones y metodos públicos
         void BulkInsert<TEntity>(IList<TEntity> entities, BulkConfig bulkConfig = null) where TEntity : class, IGenerateEntity<TEntity>;
         Task BulkInsertAsync<TEntity>(IList<TEntity> entities, BulkConfig bulkConfig = null, CancellationToken cancellationToken = default) where TEntity : class, IGenerateEntity<TEntity>;
         void BulkUpdate<TEntity>(IList<TEntity> entities, BulkConfig bulkConfig = null) where TEntity : class, IGenerateEntity<TEntity>;

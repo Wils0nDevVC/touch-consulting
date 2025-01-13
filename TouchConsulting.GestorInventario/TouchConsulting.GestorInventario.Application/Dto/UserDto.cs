@@ -1,5 +1,7 @@
 ﻿
 
+using TouchConsulting.GestorInventario.Domain.Entities;
+
 namespace TouchConsulting.GestorInventario.Application.Dto
 {
     public class UserDto
@@ -8,8 +10,7 @@ namespace TouchConsulting.GestorInventario.Application.Dto
         public required string Name { get; set; }
         public string LastName { get; set; }
         public required string Email { get; set; }
-        public required string Password { get; set; }
-
-        public ICollection<UserRoleDto> UserRoles { get; set; } = new List<UserRoleDto>();
+        public  string Password { get; set; }
+        public List<UserRoleDto> UserRoles { get; set; } = new();
     }
 }
