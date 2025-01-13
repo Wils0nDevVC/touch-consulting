@@ -6,7 +6,6 @@ using TouchConsulting.GestorInventario.Application.Interfaces;
 using TouchConsulting.GestorInventario.Domain.Entities;
 using FluentValidation;
 using static System.Runtime.InteropServices.JavaScript.JSType;
-using TouchConsulting.GestorInventario.Application.Interfaces.Repository;
 using Microsoft.EntityFrameworkCore;
 
 namespace TouchConsulting.GestorInventario.Application.Handlers.Commands.ProductController.Update

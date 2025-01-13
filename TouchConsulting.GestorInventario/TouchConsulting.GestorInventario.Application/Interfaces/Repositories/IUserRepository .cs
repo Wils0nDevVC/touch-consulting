@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using TouchConsulting.GestorInventario.Application.Dto;
 using TouchConsulting.GestorInventario.Domain.Entities;
 
-namespace TouchConsulting.GestorInventario.Application.Interfaces.Repository
+namespace TouchConsulting.GestorInventario.Application.Interfaces.Repositories
 {
     public interface IUserRepository
     {

@@ -10,5 +10,7 @@ namespace TouchConsulting.GestorInventario.ExternalServices
         public bool IsSuccess { get; set; }
         public TypeObject Result { get; set; }
         public string Message { get; set; }
+        public string ErrorMessage { get; set; }
+
     }
 }

@@ -10,10 +10,10 @@ using Microsoft.Extensions.Configuration;
 using TouchConsulting.GestorInventario.Domain.Entities;
 using TouchConsulting.GestorInventario.Application.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using TouchConsulting.GestorInventario.Application.Interfaces.Repository;
 using AutoMapper;
 using System.Text.Json.Serialization;
 using System.Text.Json;
+using TouchConsulting.GestorInventario.Application.Interfaces.Repositories;
 
 namespace TouchConsulting.GestorInventario.Application.Handlers.Commands.AuthController.Login
 {

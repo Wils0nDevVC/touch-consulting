@@ -1,8 +1,9 @@
 ﻿using Newtonsoft.Json;
+using TouchConsulting.GestorInventario.Common.Interfaces;
 
 namespace TouchConsulting.GestorInventario.Application.Dto
 {
-    public class ProductDto
+    public class ProductDto : IProduct
     {
         public int Id { get; set; }
         public required string Nombre { get; set; }

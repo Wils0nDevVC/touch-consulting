@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TouchConsulting.GestorInventario.Application.Dto;
-using TouchConsulting.GestorInventario.Application.Interfaces.Repository;
+using TouchConsulting.GestorInventario.Application.Interfaces.Repositories;
 using TouchConsulting.GestorInventario.Domain.Entities;
 using TouchConsulting.GestorInventario.Infrastructure.Persitence;
 

@@ -11,7 +11,7 @@ using FluentValidation;
 using TouchConsulting.GestorInventario.Application.Interfaces;
 using TouchConsulting.GestorInventario.Domain.Entities;
 using System.Text.Json;
-using TouchConsulting.GestorInventario.Application.Interfaces.Repository;
+using TouchConsulting.GestorInventario.Application.Interfaces.Repositories;
 
 namespace TouchConsulting.GestorInventario.Application.Handlers.Commands.UserController.Create
 {

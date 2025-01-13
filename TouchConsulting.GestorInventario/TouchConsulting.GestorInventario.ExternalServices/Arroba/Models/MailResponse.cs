@@ -10,5 +10,6 @@ namespace TouchConsulting.GestorInventario.ExternalServices.Arroba.Models
         public int Category { get; set; }
         public string CategoryDescription { get; set; }
         public List<string> Message { get; set; }
+
     }
 }

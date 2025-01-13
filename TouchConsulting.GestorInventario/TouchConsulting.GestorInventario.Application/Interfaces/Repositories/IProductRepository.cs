@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using TouchConsulting.GestorInventario.Domain.Entities;
 
-namespace TouchConsulting.GestorInventario.Domain.Interfaces
+namespace TouchConsulting.GestorInventario.Application.Interfaces.Repositories
 {
     public interface IProductRepository
     {
-        Task<int> CreateStoredProcedure(Product productEntity);
+        Task<List<Product>> FindByProductsAsync(int cantidad);
     }
 }

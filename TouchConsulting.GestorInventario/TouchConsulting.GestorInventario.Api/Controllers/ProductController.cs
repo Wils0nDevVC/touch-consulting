@@ -8,6 +8,7 @@ using TouchConsulting.GestorInventario.Application.Handlers.Commands.ProductCont
 using Microsoft.AspNetCore.Authorization;
 using TouchConsulting.GestorInventario.Application.Handlers.Commands.ProductController.Delete;
 using TouchConsulting.GestorInventario.Application.Handlers.Commands.ProductController.Update;
+using TouchConsulting.GestorInventario.Application.Handlers.Commands.ProductController.CheckInventoryAndSendEmail;
 
 namespace TouchConsulting.GestorInventario.Api.Controllers
 {
@@ -55,6 +56,13 @@ namespace TouchConsulting.GestorInventario.Api.Controllers
         public async Task<IActionResult> Update(ProductDto request)
         {
             var result = await _mediator.Send(new Update(request));
+            return Ok(result);
+        }
+
+        [HttpPost("SendMailProduct")]
+        public async Task<IActionResult> SendMailProduct(ProductDto request)
+        {
+            var result = await _mediator.Send(new SendEmailIfLowStock(request));
             return Ok(result);
         }
     }
