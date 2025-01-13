@@ -28,7 +28,9 @@ namespace TouchConsulting.GestorInventario.Infrastructure.Repositories
         }
         public IGenericRepository<Product> Products => this._serviceProvider.GetRequiredService<IGenericRepository<Product>>();
 
-       
+        public IGenericRepository<User> Users => this._serviceProvider.GetRequiredService<IGenericRepository<User>>();
+
+
 
         public int SaveChanges()
         {

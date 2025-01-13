@@ -7,6 +7,8 @@ using TouchConsulting.GestorInventario.Domain.Interfaces;
 using TouchConsulting.GestorInventario.Infrastructure.Repositories;
 using TouchConsulting.GestorInventario.Application.Interfaces;
 using TouchConsulting.GestorInventario.Infrastructure.Persitence;
+using TouchConsulting.GestorInventario.Infrastructure.Security;
+using TouchConsulting.GestorInventario.Application.Interfaces.Repository;
 
 
 namespace TouchConsulting.GestorInventario.Infrastructure
@@ -27,6 +29,8 @@ namespace TouchConsulting.GestorInventario.Infrastructure
 
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             return services;
         }

@@ -13,16 +13,17 @@ namespace TouchConsulting.GestorInventario.Infrastructure.Repositories
 {
     public class GenericRepository<TEntity> : IGenericRepository<TEntity>
                               where TEntity : BaseEntity
+
     {
         private readonly BaseDbContext _context;
         private readonly IMapper _mapper;
         private readonly DbSet<TEntity> _dbSet;
 
-        public GenericRepository(BaseDbContext context, IMapper mapper, DbSet<TEntity> dbSet)
+        public GenericRepository(BaseDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
-            _dbSet = dbSet;
+            _dbSet = _context.Set<TEntity>();
         }
 
         public IQueryable<TEntity> AsNoTracking()
@@ -97,6 +98,8 @@ namespace TouchConsulting.GestorInventario.Infrastructure.Repositories
             return await _dbSet.FindAsync(keyValues);
         }
 
+       
+
         public void Update(TEntity entity)
         {
             if (_context.Entry(entity).State == EntityState.Detached)
@@ -108,20 +111,23 @@ namespace TouchConsulting.GestorInventario.Infrastructure.Repositories
             _context.Entry(entity).State = EntityState.Modified; 
         }
 
-        public Task<TEntity> UpdateAsync(TEntity entity)
+       
+        public IQueryable<TEntity> GetQuery(Func<IQueryable<TEntity>, IQueryable<TEntity>> queryFunc)
         {
-            throw new NotImplementedException();
+            return queryFunc(_context.Set<TEntity>());
         }
 
-        //public async Task<TEntity> UpdateAsync(TEntity entity)
-        //{
-        //    TEntity destination = entity.RecoverKey();
-        //    _dbSet.Attach(destination);
-        //    _context.Entry(destination).State = EntityState.Modified;
-        //    _mapper.Map(entity, destination);
-        //    destination.updateAt = DateTime.Now;
-        //    var entry = _context.Entry(destination);
-        //    return destination;
-        //}
+
+        public async Task<TEntity> UpdateAsync(TEntity entity)
+        {
+            
+
+            _dbSet.Attach(entity); 
+            _context.Entry(entity).State = EntityState.Modified;
+            _mapper.Map(entity, entity); 
+            entity.updateAt = DateTime.Now;
+
+            return entity;
+        }
     }
 }

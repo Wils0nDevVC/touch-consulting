@@ -28,6 +28,10 @@ namespace TouchConsulting.GestorInventario.Infrastructure.Persitence.Configurati
                 .IsRequired()
                 .HasMaxLength(255);
 
+            builder.HasIndex(u => u.Email)
+            .IsUnique();
+
+
             builder.Property(u => u.Password)
                 .IsRequired()
                 .HasMaxLength(255);
